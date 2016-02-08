@@ -11,7 +11,9 @@ class Api::TodosController < ApplicationController
   end
 
   def create
-    @todo = Todo.create!(todo_params)
+    tp = todo_params
+    tp[:done] = false
+    @todo = Todo.create!(tp)
     render json: @todo
   end
 
@@ -30,6 +32,6 @@ class Api::TodosController < ApplicationController
   private
 
   def todo_params
-    params.require(:todo).permit(:title, :body, :complete)
+    params.require(:todo).permit(:title, :body, :pomodoros, :done)
   end
 end

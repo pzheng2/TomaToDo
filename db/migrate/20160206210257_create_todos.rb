@@ -4,7 +4,7 @@ class CreateTodos < ActiveRecord::Migration
       t.string :title, null: false, unique: true
       t.text :body
       t.integer :pomodoros
-      t.boolean :complete
+      t.boolean :done, default: false
 
       t.timestamps
     end

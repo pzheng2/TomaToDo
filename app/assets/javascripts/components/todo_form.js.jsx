@@ -31,7 +31,7 @@ var TodoForm = React.createClass({
           <input onChange={ this.updateBody } value={ this.state.body } type="textarea" />
         </label><br/>
         <label>Pomodoros
-          <input onChange={ this.updatePomodoros } value={ this.state.pomodoros } type="text" />
+          <input onChange={ this.updatePomodoros } value={ this.state.pomodoros } type="number" />
         </label>
         <button>Submit</button>
       </form>

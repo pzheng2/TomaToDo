@@ -1,5 +1,6 @@
 class Todo < ActiveRecord::Base
   validates :title, presence: true, uniqueness: true
-  validates :complete, presence: true, inclusion: { in: [true, false] }
+  validates :done, inclusion: { in: [true, false] }
+  validates :pomodoros, presence: true
 
 end
