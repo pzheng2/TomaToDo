@@ -74,6 +74,7 @@ var TodoDetailView = React.createClass ({
               { "Pomodoros: " + this.props.todo.pomodoros }
             </div>
             <button onClick={ this.handleEdit }>Edit</button>
+            <Timer pomodoros={ this.state.pomodoros }/>
           </div>
       );
     }
