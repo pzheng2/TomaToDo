@@ -5,12 +5,6 @@ var TodoDetailView = React.createClass ({
     return state;
 
   },
-  componentWillUnmount: function () {
-
-  },
-  componentDidMount: function () {
-
-  },
 
   componentWillReceiveProps: function(newProps) {
     var state = newProps.todo;
@@ -43,6 +37,9 @@ var TodoDetailView = React.createClass ({
   },
 
   render: function () {
+
+    
+
     var fields;
     if (this.state.edit) {
       fields = (
@@ -74,7 +71,7 @@ var TodoDetailView = React.createClass ({
               { "Pomodoros: " + this.props.todo.pomodoros }
             </div>
             <button onClick={ this.handleEdit }>Edit</button>
-            <Timer pomodoros={ this.state.pomodoros }/>
+            <Timer start={ Date.now() } duration={ 25 }/>
           </div>
       );
     }

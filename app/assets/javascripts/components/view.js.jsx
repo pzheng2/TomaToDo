@@ -34,7 +34,6 @@ var View = React.createClass ({
       active = <ActiveItem todo={ this.state.activeTodo } />;
     }
 
-
     return (
       <div>
         <div className="sidebar">
