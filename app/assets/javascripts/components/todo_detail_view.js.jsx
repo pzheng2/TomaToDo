@@ -2,6 +2,7 @@ var TodoDetailView = React.createClass ({
   getInitialState: function () {
     var state = this.props.todo;
     state.edit = false;
+    state.timer = false;
     return state;
 
   },
@@ -16,31 +17,33 @@ var TodoDetailView = React.createClass ({
     TodoStore.destroy(this.props.todo.id);
   },
 
-  handleEdit: function(e) {
+  handleEdit: function (e) {
     this.setState({edit: !this.state.edit});
   },
 
-  updateTitle: function(e) {
+  updateTitle: function (e) {
     this.setState({ title: e.currentTarget.value });
   },
 
-  updateBody: function(e) {
+  updateBody: function (e) {
     this.setState({ body: e.currentTarget.value });
   },
 
-  updatePomodoros: function(e) {
+  updatePomodoros: function (e) {
     this.setState({ pomodoros: e.currentTarget.value });
   },
 
-  handleSubmit: function(e) {
+  handleSubmit: function (e) {
     TodoStore.update({ id: this.state.id, title: this.state.title, body: this.state.body, pomodoros: this.state.pomodoros });
   },
 
+  startTimer: function () {
+    this.setState({ timer: true });
+  },
+
   render: function () {
+    var fields, timer;
 
-    
-
-    var fields;
     if (this.state.edit) {
       fields = (
           <div>
@@ -71,14 +74,24 @@ var TodoDetailView = React.createClass ({
               { "Pomodoros: " + this.props.todo.pomodoros }
             </div>
             <button onClick={ this.handleEdit }>Edit</button>
-            <Timer start={ Date.now() } duration={ 25 }/>
           </div>
+      );
+    }
+
+    if (this.state.timer) {
+      timer = (
+        <Timer start={ Date.now() } duration={ 25 }/>
+      );
+    } else {
+      timer = (
+        <button onClick={ this.startTimer }>Start Timer</button>
       );
     }
 
     return (
       <div>
-        {fields}
+        { fields }
+        { timer }
         <button onClick={ this.handleDestroy }>Delete Todo</button>
       </div>
     );

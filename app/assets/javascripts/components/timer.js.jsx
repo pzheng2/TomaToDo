@@ -32,7 +32,7 @@ var Timer = React.createClass({
     return (
       <div>
         <div className="time-left">
-          {minutes + ":" + seconds}
+          { minutes + ":" + seconds }
         </div>
 
       </div>
