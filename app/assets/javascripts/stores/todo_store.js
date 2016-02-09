@@ -67,6 +67,19 @@
     }
   };
 
+  TodoStore.update = function (todo) {
+    $.ajax({
+      url: "api/todos/" + todo.id,
+      method: "PATCH",
+      dataType: "json",
+      data: {todo: todo},
+      success: function () {
+        _todos[TodoStore.find(todo.id)] = todo;
+        TodoStore.changed();
+      }
+    });
+  };
+
   TodoStore.toggleDone = function (id) {
     $.ajax({
       url: "api/todos/" + id,
