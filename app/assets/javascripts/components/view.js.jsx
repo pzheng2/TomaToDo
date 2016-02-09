@@ -1,7 +1,7 @@
 var View = React.createClass ({
 
   getInitialState: function () {
-    return { todos: TodoStore.all() };
+    return { todos: TodoStore.all()};
   },
 
   componentDidMount: function () {
@@ -23,11 +23,17 @@ var View = React.createClass ({
     this.setState({ activeTodo: activeTodo });
   },
 
+  createTodo: function (e) {
+    e.preventDefault();
+    this.setState({ newTodo: "true" });
+  },
+
   render: function () {
     var active;
     if (this.state.activeTodo) {
-      active = <ActiveItem todo={this.state.activeTodo} />;
+      active = <ActiveItem todo={ this.state.activeTodo } />;
     }
+
 
     return (
       <div>
@@ -36,13 +42,13 @@ var View = React.createClass ({
         <ul>
           {
             this.state.todos.map(function (todo) {
-              return <li onClick={this.activateTodo} key={todo.id}>{todo.title}</li>;
+              return <li onClick={ this.activateTodo } key={ todo.id }>{ todo.title }</li>;
             }.bind(this))
           }
         </ul>
         </div>
         <div className="main">
-          {active}
+          { active }
         </div>
       </div>
     );

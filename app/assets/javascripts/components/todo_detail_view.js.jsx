@@ -9,6 +9,7 @@ var TodoDetailView = React.createClass ({
 
   },
   componentDidMount: function () {
+
   },
 
   componentWillReceiveProps: function(newProps) {
@@ -80,7 +81,7 @@ var TodoDetailView = React.createClass ({
     return (
       <div>
         {fields}
-        <button onClick={this.handleDestroy}>Delete Todo</button>
+        <button onClick={ this.handleDestroy }>Delete Todo</button>
       </div>
     );
   }
