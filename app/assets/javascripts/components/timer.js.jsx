@@ -17,12 +17,13 @@ var Timer = React.createClass({
     console.log(this.state.timeElapsed, durationInMilliseconds);
     if (this.state.timeElapsed >= durationInMilliseconds) {
       this.timerUp();
-      clearInterval(this.timer);
     }
     this.setState({ timeElapsed: new Date() - this.state.start });
   },
 
   timerUp: function () {
+    
+    clearInterval(this.timer);
     TodoStore.update({ id: this.props.todo.id, title: this.props.todo.title, body: this.props.todo.body, pomodoros: this.props.todo.pomodoros - 1 });
   },
 

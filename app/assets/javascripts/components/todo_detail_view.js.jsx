@@ -21,22 +21,6 @@ var TodoDetailView = React.createClass ({
     this.setState({edit: !this.state.edit});
   },
 
-  updateTitle: function (e) {
-    this.setState({ title: e.currentTarget.value });
-  },
-
-  updateBody: function (e) {
-    this.setState({ body: e.currentTarget.value });
-  },
-
-  updatePomodoros: function (e) {
-    this.setState({ pomodoros: e.currentTarget.value });
-  },
-
-  handleSubmit: function (e) {
-    TodoStore.update({ id: this.state.id, title: this.state.title, body: this.state.body, pomodoros: this.state.pomodoros });
-  },
-
   startTimer: function () {
     this.setState({ timer: true });
   },
@@ -50,18 +34,7 @@ var TodoDetailView = React.createClass ({
 
     if (this.state.edit) {
       fields = (
-          <div>
-            <label>Title
-              <input onChange={ this.updateTitle } value={ this.state.title } type="text" />
-            </label><br/>
-            <label>Body
-              <input onChange={ this.updateBody } value={ this.state.body } type="textarea" />
-            </label><br/>
-            <label>Pomodoros
-              <input onChange={ this.updatePomodoros } value={ this.state.pomodoros } type="number" />
-            </label>
-            <button onClick={ this.handleSubmit }>Submit</button>
-          </div>
+          <TodoEdit todo={ this.props.todo }/>
         );
 
     } else {
