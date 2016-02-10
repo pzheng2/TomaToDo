@@ -1,7 +1,7 @@
 var Timer = React.createClass({
 
   getInitialState: function () {
-    return { duration: this.props.duration, timeElapsed: 0, start: this.props.start, pause: false };
+    return { timeElapsed: 0, start: this.props.start, pause: false };
   },
 
   componentDidMount: function () {
@@ -13,14 +13,17 @@ var Timer = React.createClass({
   },
 
   tick: function () {
-    var timeElapsed = (new Date() - this.state.start);
-    this.setState({ timeElapsed: timeElapsed });
+    var durationInMilliseconds = this.props.duration * 60000;
+    console.log(this.state.timeElapsed, durationInMilliseconds);
+    if (this.state.timeElapsed >= durationInMilliseconds) {
+      this.timerUp();
+      clearInterval(this.timer);
+    }
+    this.setState({ timeElapsed: new Date() - this.state.start });
   },
 
   timerUp: function () {
-    var updatedTodo = this.props.todo;
-    updatedTodo.pomodoros -= 1;
-    TodoStore.update(updatedTodo);
+    TodoStore.update({ id: this.props.todo.id, title: this.props.todo.title, body: this.props.todo.body, pomodoros: this.props.todo.pomodoros - 1 });
   },
 
   pause: function () {
@@ -34,10 +37,8 @@ var Timer = React.createClass({
   },
 
   render: function () {
-    var elapsed = Math.round(this.state.timeElapsed / 60);
-    var seconds = 59 - parseInt((elapsed / 10) % 60);
-    var minutes = this.state.duration - 1 - parseInt((elapsed / 10) / 60);
-    // var minutes = 1 - parseInt((elapsed / 10) / 60);
+    var seconds = (60 - Math.ceil(this.state.timeElapsed / 1000)) % 60;
+    var minutes = this.props.duration - Math.ceil(this.state.timeElapsed / 60000);
 
     if (seconds.toString().length < 2) {
       seconds = "0" + seconds.toString();
