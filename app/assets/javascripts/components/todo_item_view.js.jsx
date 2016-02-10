@@ -13,6 +13,7 @@ var TodoItemView = React.createClass ({
           { "Pomodoros: " + this.props.todo.pomodoros }
         </div>
         <button onClick={ this.props.handleEdit }>Edit</button>
+        <button onClick={ this.handleDestroy }>Delete Todo</button>
       </div>
     );
   }

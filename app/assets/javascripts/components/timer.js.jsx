@@ -22,9 +22,9 @@ var Timer = React.createClass({
   },
 
   timerUp: function () {
-    
     clearInterval(this.timer);
     TodoStore.update({ id: this.props.todo.id, title: this.props.todo.title, body: this.props.todo.body, pomodoros: this.props.todo.pomodoros - 1 });
+    this.props.startBreak();
   },
 
   pause: function () {

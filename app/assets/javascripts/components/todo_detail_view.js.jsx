@@ -21,47 +21,39 @@ var TodoDetailView = React.createClass ({
   },
 
   startTimer: function () {
-    this.setState({ timer: true });
+    this.setState({ timer: true, duration: 25 });
   },
 
   stopTimer: function () {
     this.setState({ timer: false });
   },
 
+  startBreak: function () {
+    this.stopTimer();
+    this.setState({ timer: true, duration: 5 });
+  },
+
   render: function () {
-    var fields, timer;
+    var fields = this.state.edit ?
+    (
+      <div>
+        <TodoEdit todo={ this.props.todo }/>
+        <button onClick={ this.handleEdit }>Cancel Edit</button>
+      </div>
+    ) : <TodoItemView handleEdit={ this.handleEdit } todo={ this.props.todo }/>;
 
-    if (this.state.edit) {
-      fields = (
-        <div>
-          <TodoEdit todo={ this.props.todo }/>
-          <button onClick={ this.handleEdit }>Cancel Edit</button>
-        </div>
-      );
-    } else {
-      fields = (
-        <TodoItemView handleEdit={ this.handleEdit } todo={ this.props.todo }/>
-      );
-    }
-
-    if (this.state.timer) {
-      timer = (
-        <div>
-          <Timer todo={ this.props.todo } start={ Date.now() } duration={ 1 }/>
-          <button onClick={ this.stopTimer }> Stop Timer</button>
-        </div>
-      );
-    } else {
-      timer = (
-        <button onClick={ this.startTimer }>Start Timer</button>
-      );
-    }
+    var timer = this.state.timer ?
+    (
+      <div>
+        <Timer startBreak={ this.startBreak } todo={ this.props.todo } start={ Date.now() } duration={ this.state.duration }/>
+        <button onClick={ this.stopTimer }>Stop Timer</button>
+      </div>
+    ) : <button onClick={ this.startTimer }>Start Timer</button>;
 
     return (
       <div>
         { fields }
         { timer }
-        <button onClick={ this.handleDestroy }>Delete Todo</button>
       </div>
     );
   }
