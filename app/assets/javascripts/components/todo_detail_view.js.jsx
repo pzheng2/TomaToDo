@@ -3,6 +3,7 @@ var TodoDetailView = React.createClass ({
     var state = this.props.todo;
     state.edit = false;
     state.timer = false;
+    state.duration = 25;
     return state;
 
   },
@@ -39,6 +40,10 @@ var TodoDetailView = React.createClass ({
 
   startTimer: function () {
     this.setState({ timer: true });
+  },
+
+  stopTimer: function () {
+    this.setState({ timer: false });
   },
 
   render: function () {
@@ -80,7 +85,10 @@ var TodoDetailView = React.createClass ({
 
     if (this.state.timer) {
       timer = (
-        <Timer start={ Date.now() } duration={ 25 }/>
+        <div>
+          <Timer todo={ this.props.todo } start={ Date.now() } duration={ this.state.duration }/>
+          <button onClick={ this.stopTimer }> Stop Timer</button>
+        </div>
       );
     } else {
       timer = (
