@@ -4,7 +4,6 @@ var TodoDetailView = React.createClass ({
     state.edit = false;
     state.timer = false;
     return state;
-
   },
 
   componentWillReceiveProps: function(newProps) {
@@ -18,7 +17,7 @@ var TodoDetailView = React.createClass ({
   },
 
   handleEdit: function (e) {
-    this.setState({edit: !this.state.edit});
+    this.setState({ edit: !this.state.edit });
   },
 
   startTimer: function () {
@@ -34,24 +33,14 @@ var TodoDetailView = React.createClass ({
 
     if (this.state.edit) {
       fields = (
+        <div>
           <TodoEdit todo={ this.props.todo }/>
-        );
-
+          <button onClick={ this.handleEdit }>Cancel Edit</button>
+        </div>
+      );
     } else {
-
       fields = (
-          <div>
-            <div>
-              { "Title: " + this.props.todo.title }
-            </div>
-            <div>
-              { "Body: " + this.props.todo.body }
-            </div>
-            <div>
-              { "Pomodoros: " + this.props.todo.pomodoros }
-            </div>
-            <button onClick={ this.handleEdit }>Edit</button>
-          </div>
+        <TodoItemView handleEdit={ this.handleEdit } todo={ this.props.todo }/>
       );
     }
 
