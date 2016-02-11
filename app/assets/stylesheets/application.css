@@ -35,6 +35,12 @@
    list-style: none;
  }
 
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
  textarea {
   width: 600px;
   height: 100px;
@@ -55,10 +61,4 @@ input, textarea {
 input:focus, textarea:focus {
   box-shadow: 0 0 5px rgba(81, 203, 238, 1);
   border: 1px solid rgba(81, 203, 238, 1);
-}
-
-.view {
-  /*display: block;*/
-  width: 90%;
-  margin: auto;
 }

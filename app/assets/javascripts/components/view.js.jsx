@@ -56,17 +56,11 @@ var View = React.createClass ({
     if (this.state.currentUser && this.state.currentUser.username) {
       view = (
         <div>
-          { "Hello " + this.state.currentUser.username }
-          <button onClick={ this.logout }>Log out</button>
           <div className="sidebar">
-          <TodoForm currentUser={ this.state.currentUser }/>
-          <ul className="todo-list">
-            {
-              this.state.todos.map(function (todo) {
-                return <li onClick={ this.activateTodo } key={ todo.id }>{ todo.title }</li>;
-              }.bind(this))
-            }
-          </ul>
+            <div>{ "You are currently logged in as: " + this.state.currentUser.username }</div>
+            <button onClick={ this.logout }>Log out</button>
+            <TodoList active={ this.state.activeTodo.id } todos={ this.state.todos } activateTodo={ this.activateTodo }/>
+            <TodoForm currentUser={ this.state.currentUser }/>
           </div>
           <div className="main">
             { active }

@@ -1,0 +1,43 @@
+
+.view {
+  display: block;
+  width: 90%;
+  height: auto;
+  margin: auto;
+  margin-top: 25px;
+  background: #ccc;
+}
+
+.sidebar {
+  background: blue;
+  width: 25%;
+  float: left;
+}
+
+.main {
+  background: yellow;
+  width: 75%;
+  float: right;
+  margin: auto;
+}
+
+.todo-list {
+  border-bottom: 1px solid black;
+}
+
+.todo-list > li {
+  border-top: 1px solid black;
+}
+
+.active {
+  font-weight: bold;
+}
+
+.todo-list > li:hover {
+  background: red;
+  border: 1px solid black;
+}
+
+button {
+  margin: 10px 5px 0 0;
+}
