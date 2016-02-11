@@ -35,7 +35,7 @@
       dataType: 'json',
       data: { user: credentials },
       success: function (user) {
-        UserActions.receiveUser(user);
+        CurrentUserStore.changed();
         successCallback && successCallback(user);
       },
       error: function (errors) {
@@ -51,7 +51,6 @@
       dataType: 'json',
       data: credentials,
       success: function (currentUser) {
-        // CurrentUserActions.receiveCurrentUser(currentUser);
         _currentUser = currentUser;
         CurrentUserStore.changed();
         successCallback && successCallback(currentUser);

@@ -38,6 +38,14 @@ var View = React.createClass ({
     CurrentUserStore.logout();
   },
 
+  signUp: function () {
+    this.setState({ signUp: true });
+  },
+
+  cancelSignUp: function () {
+    this.setState({ signUp: false });
+  },
+
   render: function () {
     var active;
     if (this.state.activeTodo) {
@@ -66,7 +74,21 @@ var View = React.createClass ({
         </div>
       );
     } else {
-      view = <SessionForm/>;
+      if (this.state.signUp) {
+        view = (
+          <div>
+            <UserForm/>
+            <button onClick={ this.cancelSignUp }>Back to Login</button>
+          </div>
+        );
+      } else {
+        view = (
+          <div>
+            <SessionForm/>
+            <button onClick={ this.signUp }>Sign Up</button>
+          </div>
+        );
+      }
     }
 
     return (

@@ -6,10 +6,18 @@ var UserForm = React.createClass({
 
   submit: function (e) {
     e.preventDefault();
-    UsersApiUtil.createUser({
-      username: this.state.username,
-      password: this.state.password
-    }, this.successCallback, this.errorCallback);
+    var credentials = $(e.currentTarget).serializeJSON();
+    CurrentUserStore.createUser(
+      credentials,
+      this.successCallback(credentials),
+      this.errorCallback
+    );
+  },
+
+  successCallback: function (credentials) {
+    setTimeout(function () {
+      CurrentUserStore.login(credentials);
+    }, 1000);
   },
 
   errorCallback: function (errors) {
@@ -38,11 +46,11 @@ var UserForm = React.createClass({
           </li>
 
           <li>
-            <input type="text" name="username" placeholder="Username" valueLink={ this.linkState("username") } />
+            <input className="input" type="text" name="username" placeholder="Username" />
           </li>
 
           <li>
-            <input type="password" name="password" placeholder="Password" valueLink={ this.linkState("password") } />
+            <input className="input" type="password" name="password" placeholder="Password" />
           </li>
 
           <li><button>Sign Up</button></li>
