@@ -1,7 +1,7 @@
 var Timer = React.createClass({
 
   getInitialState: function () {
-    this.pomodoroLength = 1;
+    this.pomodoroLength = 25;
     this.breakLength = 5;
     return { timeElapsed: 0, start: this.props.start, pause: false, break: false, duration: this.pomodoroLength };
   },
@@ -16,7 +16,7 @@ var Timer = React.createClass({
 
   tick: function () {
     var durationInMilliseconds = this.state.duration * 60000;
-    console.log(this.state.timeElapsed, durationInMilliseconds);
+    // console.log(this.state.timeElapsed, durationInMilliseconds);
     if (this.state.timeElapsed >= durationInMilliseconds) {
       this.timerFinished();
     }
@@ -35,7 +35,7 @@ var Timer = React.createClass({
   },
 
   resume: function () {
-    this.setState({ pause: false, start: Date.now().getTime() - this.state.timeElapsed });
+    this.setState({ pause: false, start: Date.now() - this.state.timeElapsed });
     this.timer = setInterval(this.tick, 100);
   },
 

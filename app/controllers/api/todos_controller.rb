@@ -1,7 +1,8 @@
 class Api::TodosController < ApplicationController
 
   def index
-    todos = Todo.all
+    todos = nil
+    todos = current_user.todos if current_user
     render json: todos
   end
 
@@ -32,6 +33,6 @@ class Api::TodosController < ApplicationController
   private
 
   def todo_params
-    params.require(:todo).permit(:title, :body, :pomodoros, :done)
+    params.require(:todo).permit(:title, :body, :pomodoros, :user_id)
   end
 end

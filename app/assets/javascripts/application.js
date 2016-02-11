@@ -13,6 +13,7 @@
 
 //= require jquery
 //= require jquery_ujs
+//= require jquery.serializeJSON
 //= require react
 //= require react_ujs
 //= require components

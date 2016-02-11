@@ -1,5 +1,9 @@
 var TodoItemView = React.createClass ({
 
+  handleDestroy: function (e) {
+    TodoStore.destroy(this.props.todo.id);
+  },
+
   render: function () {
     return (
       <div>

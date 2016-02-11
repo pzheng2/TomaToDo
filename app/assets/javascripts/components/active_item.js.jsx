@@ -9,4 +9,3 @@ var ActiveItem = React.createClass ({
     );
   }
 });
-        // <DoneButton todo={ this.props.todo }/>

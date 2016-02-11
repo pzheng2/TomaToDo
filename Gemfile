@@ -10,6 +10,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'react-rails', '~> 1.3.0'
 gem 'flux-rails-assets', '~>2.1.0'
+gem 'bcrypt-ruby', require: 'bcrypt'
 
 group :development, :test do
   gem 'byebug'

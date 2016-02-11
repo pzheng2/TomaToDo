@@ -9,12 +9,22 @@ var TodoDetailView = React.createClass ({
   componentWillReceiveProps: function(newProps) {
     var state = newProps.todo;
     state.edit = false;
+    state.timer = false;
     this.setState(state);
   },
 
-  handleDestroy: function (e) {
-    TodoStore.destroy(this.props.todo.id);
-  },
+  // componentDidMount: function () {
+  //   TodoStore.addChangedHandler(this.todoChanged);
+  // },
+  //
+  // componentWillUnmount: function () {
+  //   TodoStore.removeChangedHandler(this.todoChanged);
+  // },
+  //
+  // todoChanged: function () {
+  //   var updatedTodo = TodoStore.find(this.state.id);
+  //   this.setState(updatedTodo);
+  // },
 
   handleEdit: function (e) {
     this.setState({ edit: !this.state.edit });
@@ -35,10 +45,14 @@ var TodoDetailView = React.createClass ({
         <TodoEdit todo={ this.props.todo }/>
         <button onClick={ this.handleEdit }>Cancel Edit</button>
       </div>
-    ) : <TodoItemView handleEdit={ this.handleEdit } todo={ this.props.todo }/>;
+    ) :
+    (
+      <TodoItemView handleEdit={ this.handleEdit } todo={ this.props.todo }/>
+    );
 
     var timer;
     if (this.state.timer) {
+
       timer = (
         <div>
           <Timer todo={ this.props.todo } start={ Date.now() }/>
@@ -47,12 +61,13 @@ var TodoDetailView = React.createClass ({
       );
 
     } else {
-      
+
       if (this.state.pomodoros === 0) {
-        timer = <p>Finished Pomodoro!</p>;
+        timer = <p>Finished Todo!</p>;
       } else {
         timer = <button onClick={ this.startTimer }>Start Timer</button>;
       }
+
     }
 
     return (

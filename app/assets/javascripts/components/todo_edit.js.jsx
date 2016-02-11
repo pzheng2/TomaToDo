@@ -17,7 +17,12 @@ var TodoEdit = React.createClass ({
   },
 
   handleSubmit: function (e) {
-    TodoStore.update({ id: this.props.todo.id, title: this.state.title, body: this.state.body, pomodoros: this.state.pomodoros });
+    TodoStore.update({
+      id: this.props.todo.id,
+      title: this.state.title,
+      body: this.state.body,
+      pomodoros: this.state.pomodoros
+    });
   },
 
   render: function () {
