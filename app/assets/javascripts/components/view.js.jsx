@@ -1,7 +1,7 @@
 var View = React.createClass ({
 
   getInitialState: function () {
-    return { todos: TodoStore.all()};
+    return { activeTodo: TodoStore.all()[0], todos: TodoStore.all()};
   },
 
   componentDidMount: function () {
@@ -14,7 +14,15 @@ var View = React.createClass ({
   },
 
   todosChanged: function () {
-    this.setState({ activeTodo: TodoStore.all()[0], todos: TodoStore.all() });
+    this.setState({ todos: TodoStore.all() });
+  },
+
+  findActiveTodo: function (allTodos) {
+    var updatedActiveTodo = allTodos.forEach(function (todo) {
+      if (todo.id === this.state.activeTodo.id) {
+        return todo;
+      }
+    });
   },
 
   activateTodo: function (e) {

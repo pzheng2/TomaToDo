@@ -1,7 +1,9 @@
 var Timer = React.createClass({
 
   getInitialState: function () {
-    return { timeElapsed: 0, start: this.props.start, pause: false };
+    this.pomodoroLength = 1;
+    this.breakLength = 5;
+    return { timeElapsed: 0, start: this.props.start, pause: false, break: false, duration: this.pomodoroLength };
   },
 
   componentDidMount: function () {
@@ -13,18 +15,18 @@ var Timer = React.createClass({
   },
 
   tick: function () {
-    var durationInMilliseconds = this.props.duration * 60000;
+    var durationInMilliseconds = this.state.duration * 60000;
     console.log(this.state.timeElapsed, durationInMilliseconds);
     if (this.state.timeElapsed >= durationInMilliseconds) {
-      this.timerUp();
+      this.timerFinished();
     }
-    this.setState({ timeElapsed: new Date() - this.state.start });
+    this.setState({ timeElapsed: Date.now() - this.state.start });
   },
 
-  timerUp: function () {
-    clearInterval(this.timer);
+  timerFinished: function () {
     TodoStore.update({ id: this.props.todo.id, title: this.props.todo.title, body: this.props.todo.body, pomodoros: this.props.todo.pomodoros - 1 });
-    this.props.startBreak();
+    var newDuration = this.state.break ? this.pomodoroLength : this.breakLength;
+    this.setState({ timeElapsed: 0, start: Date.now(), break: !this.state.break, duration: newDuration });
   },
 
   pause: function () {
@@ -33,25 +35,29 @@ var Timer = React.createClass({
   },
 
   resume: function () {
-    this.setState({ pause: false, start: new Date().getTime() - this.state.timeElapsed });
+    this.setState({ pause: false, start: Date.now().getTime() - this.state.timeElapsed });
     this.timer = setInterval(this.tick, 100);
   },
 
   render: function () {
-    var seconds = (60 - Math.ceil(this.state.timeElapsed / 1000)) % 60;
-    var minutes = this.props.duration - Math.ceil(this.state.timeElapsed / 60000);
+    var totalSeconds = Math.floor(this.state.timeElapsed / 1000);
+    var minutesPassed = Math.ceil(totalSeconds / 60);
+    var secondsPassed = totalSeconds % 60;
 
-    if (seconds.toString().length < 2) {
-      seconds = "0" + seconds.toString();
+    var minutesLeft = this.state.duration - minutesPassed;
+    var secondsLeft = (60 - secondsPassed) % 60;
+
+    if (secondsLeft.toString().length < 2) {
+      secondsLeft = "0" + secondsLeft.toString();
     }
 
-    if (minutes.toString().length < 2) {
-      minutes = "0" + minutes.toString();
+    if (minutesLeft.toString().length < 2) {
+      minutesLeft = "0" + minutesLeft.toString();
     }
 
-    if (minutes < 0) {
-      minutes = "00";
-      seconds = "00";
+    if (minutesLeft < 0) {
+      minutesLeft = "00";
+      // secondsLeft = "00";
     }
 
     var pause;
@@ -63,7 +69,7 @@ var Timer = React.createClass({
     return (
       <div>
         <div className="time-left">
-          { minutes + ":" + seconds }
+          { minutesLeft + ":" + secondsLeft }
         </div>
         { pause }
 

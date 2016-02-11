@@ -4,11 +4,9 @@ var ActiveItem = React.createClass ({
 
     return (
       <div>
-        <div onClick={this.handleClick}>
-        <TodoDetailView todo={this.props.todo} />
-        </div>
-        <DoneButton todo={this.props.todo}/>
+        <TodoDetailView todo={ this.props.todo } />
       </div>
     );
   }
 });
+        // <DoneButton todo={ this.props.todo }/>

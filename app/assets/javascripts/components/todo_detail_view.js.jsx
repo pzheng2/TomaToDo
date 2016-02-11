@@ -21,16 +21,11 @@ var TodoDetailView = React.createClass ({
   },
 
   startTimer: function () {
-    this.setState({ timer: true, duration: 25 });
+    this.setState({ timer: true });
   },
 
   stopTimer: function () {
     this.setState({ timer: false });
-  },
-
-  startBreak: function () {
-    this.stopTimer();
-    this.setState({ timer: true, duration: 5 });
   },
 
   render: function () {
@@ -42,13 +37,23 @@ var TodoDetailView = React.createClass ({
       </div>
     ) : <TodoItemView handleEdit={ this.handleEdit } todo={ this.props.todo }/>;
 
-    var timer = this.state.timer ?
-    (
-      <div>
-        <Timer startBreak={ this.startBreak } todo={ this.props.todo } start={ Date.now() } duration={ this.state.duration }/>
-        <button onClick={ this.stopTimer }>Stop Timer</button>
-      </div>
-    ) : <button onClick={ this.startTimer }>Start Timer</button>;
+    var timer;
+    if (this.state.timer) {
+      timer = (
+        <div>
+          <Timer todo={ this.props.todo } start={ Date.now() }/>
+          <button onClick={ this.stopTimer }>Stop Timer</button>
+        </div>
+      );
+
+    } else {
+      
+      if (this.state.pomodoros === 0) {
+        timer = <p>Finished Pomodoro!</p>;
+      } else {
+        timer = <button onClick={ this.startTimer }>Start Timer</button>;
+      }
+    }
 
     return (
       <div>
