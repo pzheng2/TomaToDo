@@ -1,7 +1,7 @@
 class Api::TodosController < ApplicationController
 
   def index
-    todos = nil
+    todos = []
     todos = current_user.todos if current_user
     render json: todos
   end
@@ -20,8 +20,12 @@ class Api::TodosController < ApplicationController
 
   def update
     @todo = Todo.find(params[:id])
-    @todo.update_attributes(todo_params)
-    render json: @todo
+    if (@todo.update_attributes(todo_params))
+      render json: @todo
+    else
+      render json: @todo.errors.full_messages, status: 400
+    end
+
   end
 
   def destroy

@@ -13,18 +13,18 @@ var TodoDetailView = React.createClass ({
     this.setState(state);
   },
 
-  // componentDidMount: function () {
-  //   TodoStore.addChangedHandler(this.todoChanged);
-  // },
-  //
-  // componentWillUnmount: function () {
-  //   TodoStore.removeChangedHandler(this.todoChanged);
-  // },
-  //
-  // todoChanged: function () {
-  //   var updatedTodo = TodoStore.find(this.state.id);
-  //   this.setState(updatedTodo);
-  // },
+  componentDidMount: function () {
+    TodoStore.addChangedHandler(this.todoChanged);
+  },
+
+  componentWillUnmount: function () {
+    TodoStore.removeChangedHandler(this.todoChanged);
+  },
+
+  todoChanged: function () {
+    var updatedTodo = TodoStore.getTodo(this.state.id);
+    this.setState(updatedTodo);
+  },
 
   handleEdit: function (e) {
     this.setState({ edit: !this.state.edit });

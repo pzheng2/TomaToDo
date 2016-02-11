@@ -49,8 +49,12 @@
     });
   };
 
-  TodoStore.find = function(id) {
+  TodoStore.find = function (id) {
     return _todos.findIndex(function (todo) { return todo.id === id; });
+  };
+
+  TodoStore.getTodo = function (id) {
+    return _todos[TodoStore.find(id)];
   };
 
   TodoStore.destroy = function (id) {
@@ -67,15 +71,18 @@
     }
   };
 
-  TodoStore.update = function (todo) {
+  TodoStore.update = function (todo, errorCallback) {
     $.ajax({
       url: "api/todos/" + todo.id,
       method: "PATCH",
       dataType: "json",
       data: {todo: todo},
-      success: function () {
+      success: function (todo) {
         _todos[TodoStore.find(todo.id)] = todo;
         TodoStore.changed();
+      },
+      error: function (errors) {
+        errorCallback && errorCallback(errors);
       }
     });
   };

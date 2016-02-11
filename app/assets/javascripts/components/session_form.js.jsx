@@ -15,7 +15,6 @@ var SessionForm = React.createClass({
   },
 
   successfulLogin: function (currentUser) {
-    console.log(currentUser);
     TodoStore.fetch();
   },
 

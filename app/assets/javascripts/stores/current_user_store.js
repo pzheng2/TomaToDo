@@ -68,7 +68,6 @@
       url: 'api/session',
       dataType: 'json',
       success: function () {
-        console.log("logged out");
         _currentUser = {};
         CurrentUserStore.changed();
       }

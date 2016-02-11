@@ -39,7 +39,6 @@ var View = React.createClass ({
   },
 
   render: function () {
-    console.log(this.state.todos, this.state.currentUser);
     var active;
     if (this.state.activeTodo) {
       active = <ActiveItem todo={ this.state.activeTodo } />;
