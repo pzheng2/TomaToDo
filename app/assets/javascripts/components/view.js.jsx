@@ -75,7 +75,7 @@ var View = React.createClass ({
         activeTodo = this.state.activeTodo.id;
       }
       view = (
-        <div>
+        <div className="sidebar-main">
           <div className="sidebar">
             <div className="stuff-in-sidebar">
               <div>{ "logged in as: " + this.state.currentUser.username }</div>
