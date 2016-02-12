@@ -33,7 +33,13 @@ var UserForm = React.createClass({
     }
 
     return (
-      <form onSubmit={ this.submit }>
+      <form className="login-inputs group" onSubmit={ this.submit }>
+        <h1 className="website-name">
+          <div className="toma">Toma</div>
+          <div className="to">To</div>
+          <div className="do">Do</div>
+        </h1>
+        <h3>Sign Up</h3>
         <ul>
           <li>
             <div className="errors">

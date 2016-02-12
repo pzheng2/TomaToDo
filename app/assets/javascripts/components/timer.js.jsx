@@ -121,7 +121,7 @@ var Timer = React.createClass({
         { modal }
         { paused }
         <div className="consecutive-pomodoros">
-          { "Pomodoros Completed: " + this.state.pomodoroCount }
+          { "Pomodoros completed this session: " + this.state.pomodoroCount }
         </div>
         <div className="time-left">
           { minutesLeft + ":" + secondsLeft }

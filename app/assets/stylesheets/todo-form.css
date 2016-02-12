@@ -1,0 +1,14 @@
+.todo-form {
+  margin: 10px;
+}
+
+.todo-fields {
+  width: 100%;
+  margin: auto;
+  float: left;
+}
+
+.todo-fields > li {
+  display: block;
+  margin-bottom: 5px;
+}

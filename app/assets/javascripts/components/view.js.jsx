@@ -93,9 +93,9 @@ var View = React.createClass ({
     } else {
       if (this.state.signUp) {
         view = (
-          <div>
+          <div className="login-body">
             <UserForm/>
-            <button onClick={ this.cancelSignUp }>Back to Login</button>
+            <button className="back-to-login" onClick={ this.cancelSignUp }>Back to Login</button>
           </div>
         );
       } else {
@@ -103,8 +103,8 @@ var View = React.createClass ({
           <div className="login-body">
             <div className="login-inputs group">
               <SessionForm/>
-              <button className="sign-up" onClick={ this.signUp }>Sign Up</button>
             </div>
+            <button className="sign-up" onClick={ this.signUp }>Sign Up</button>
           </div>
         );
       }

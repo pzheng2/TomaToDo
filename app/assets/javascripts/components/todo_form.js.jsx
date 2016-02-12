@@ -29,19 +29,21 @@ var TodoForm = React.createClass({
 
   render: function () {
     return (
-      <div>
+      <div className="todo-form">
         <h3>Add new todo</h3>
-        <label>Title
-          <input onChange={ this.updateTitle } value={ this.state.title } type="text" />
-        </label><br/>
-        <label>Body
-          <input onChange={ this.updateBody } value={ this.state.body } type="textarea" />
-        </label><br/>
-        <label>Pomodoros
-          <input onChange={ this.updatePomodoros } value={ this.state.pomodoros } type="number" />
-        </label>
-        <button onClick={ this.handleSubmit }>Submit</button>
-        <button onClick={ this.props.cancelNewTodo }>Cancel</button>
+        <ul className="todo-fields">
+          <li><label>Title:
+            <input onChange={ this.updateTitle } value={ this.state.title } type="text" />
+          </label></li>
+          <li><label>Body:
+            <input onChange={ this.updateBody } value={ this.state.body } type="textarea" />
+          </label></li>
+          <li><label>Pomodoros:
+            <input onChange={ this.updatePomodoros } value={ this.state.pomodoros } type="number" />
+          </label></li>
+          <li><button onClick={ this.handleSubmit }>Submit</button>
+          <button onClick={ this.props.cancelNewTodo }>Cancel</button></li>
+        </ul>
       </div>
     );
   }
