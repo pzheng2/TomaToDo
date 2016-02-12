@@ -77,7 +77,7 @@
       method: "PATCH",
       dataType: "json",
       data: {todo: todo},
-      success: function (todo) {
+      success: function () {
         _todos[TodoStore.find(todo.id)] = todo;
         TodoStore.changed();
       },
