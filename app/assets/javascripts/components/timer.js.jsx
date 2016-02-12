@@ -1,9 +1,9 @@
 var Timer = React.createClass({
 
   getInitialState: function () {
-    this.pomodoroLength = 0.2;
-    this.breakLength = 0.1;
-    this.longerBreakLength = 0.3;
+    this.pomodoroLength = 25;
+    this.breakLength = 5;
+    this.longerBreakLength = 30;
 
     return {
       timeElapsed: 0,

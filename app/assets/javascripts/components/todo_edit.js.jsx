@@ -27,7 +27,6 @@ var TodoEdit = React.createClass ({
       body: this.state.body,
       pomodoros: this.state.pomodoros
     }, this.errorCallback);
-    this.props.submitEdit();
   },
 
   render: function () {
