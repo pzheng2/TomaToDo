@@ -1,0 +1,13 @@
+.time-left {
+  font-size: 40px;
+}
+
+.break-alert {
+  font-size: 100px;
+  background: pink;
+}
+
+.break-alert-2 {
+  font-size: 100px;
+  background: green;
+}

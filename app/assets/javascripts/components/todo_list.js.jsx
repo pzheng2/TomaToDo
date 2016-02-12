@@ -4,7 +4,7 @@ var TodoList = React.createClass({
 
     return (
       <ul className="todo-list">
-        <li>Your Todos</li>
+        TODOS
         {
           this.props.todos.map(function (todo) {
             if (todo.id === this.props.active) {

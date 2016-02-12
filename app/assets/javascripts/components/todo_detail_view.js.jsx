@@ -3,13 +3,13 @@ var TodoDetailView = React.createClass ({
     var state = this.props.todo;
     state.edit = false;
     state.timer = false;
+    state.pomodoroCount = 0;
     return state;
   },
 
   componentWillReceiveProps: function(newProps) {
     var state = newProps.todo;
     state.edit = false;
-    state.timer = false;
     this.setState(state);
   },
 
@@ -38,6 +38,10 @@ var TodoDetailView = React.createClass ({
     this.setState({ timer: false });
   },
 
+  receivePomodoroCount: function (pomodoroCount) {
+    this.setState({ pomodoroCount: pomodoroCount });
+  },
+
   render: function () {
     var fields = this.state.edit ?
     (
@@ -55,7 +59,12 @@ var TodoDetailView = React.createClass ({
 
       timer = (
         <div>
-          <Timer todo={ this.props.todo } start={ Date.now() }/>
+          <Timer
+            savePomodoroCount={ this.receivePomodoroCount }
+            pomodoroCount={ this.state.pomodoroCount }
+            todo={ this.props.todo }
+            start={ Date.now()}
+          />
           <button onClick={ this.stopTimer }>Stop Timer</button>
         </div>
       );
@@ -67,11 +76,10 @@ var TodoDetailView = React.createClass ({
       } else {
         timer = <button onClick={ this.startTimer }>Start Timer</button>;
       }
-
     }
 
     return (
-      <div>
+      <div className="todo-detail-view">
         { fields }
         { timer }
       </div>

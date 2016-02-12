@@ -49,7 +49,7 @@ var View = React.createClass ({
   render: function () {
     var active;
     if (this.state.activeTodo) {
-      active = <ActiveItem todo={ this.state.activeTodo } />;
+      active = <TodoDetailView todo={ this.state.activeTodo } />;
     }
 
     var view;
@@ -57,10 +57,12 @@ var View = React.createClass ({
       view = (
         <div>
           <div className="sidebar">
-            <div>{ "You are currently logged in as: " + this.state.currentUser.username }</div>
-            <button onClick={ this.logout }>Log out</button>
-            <TodoList active={ this.state.activeTodo.id } todos={ this.state.todos } activateTodo={ this.activateTodo }/>
-            <TodoForm currentUser={ this.state.currentUser }/>
+            <div className="stuff-in-sidebar">
+              <div>{ "logged in as: " + this.state.currentUser.username }</div>
+              <button onClick={ this.logout }>Log out</button>
+              <TodoList active={ this.state.activeTodo.id } todos={ this.state.todos } activateTodo={ this.activateTodo }/>
+              <TodoForm currentUser={ this.state.currentUser }/>
+            </div>
           </div>
           <div className="main">
             { active }
@@ -77,16 +79,16 @@ var View = React.createClass ({
         );
       } else {
         view = (
-          <div>
+          <div className="login-body">
             <SessionForm/>
-            <button onClick={ this.signUp }>Sign Up</button>
+            <button className="sign-up" onClick={ this.signUp }>Sign Up</button>
           </div>
         );
       }
     }
 
     return (
-      <div className="view">
+      <div className="view group">
         { view }
       </div>
 

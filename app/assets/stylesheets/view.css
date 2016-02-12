@@ -5,24 +5,35 @@
   height: auto;
   margin: auto;
   margin-top: 25px;
-  background: #ccc;
+  background: white;
+  border-radius: 5px;
+  overflow: hidden;
+  /*border: 1px solid gray;*/
 }
 
 .sidebar {
   background: blue;
-  width: 25%;
+  min-width: 20%;
+  height: 100%;
   float: left;
 }
 
 .main {
   background: yellow;
-  width: 75%;
-  float: right;
+  min-width: 80%;
+  height: 100%;
+  float: left;
   margin: auto;
+  text-align: center;
+}
+
+.todo-detail-view, .stuff-in-sidebar {
+  margin: 10px;
 }
 
 .todo-list {
   border-bottom: 1px solid black;
+  text-align: center;
 }
 
 .todo-list > li {
@@ -35,9 +46,8 @@
 
 .todo-list > li:hover {
   background: red;
-  border: 1px solid black;
 }
 
 button {
-  margin: 10px 5px 0 0;
+  margin: 5px;
 }

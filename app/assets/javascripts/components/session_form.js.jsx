@@ -24,8 +24,9 @@ var SessionForm = React.createClass({
 
   render: function () {
     return (
-      <form className="login-body group" onSubmit={ this.submit }>
+      <form className="group" onSubmit={ this.submit }>
         <ul>
+          <h3>Log In</h3>
           <li>{ this.state.errors }</li>
 
           <li>
