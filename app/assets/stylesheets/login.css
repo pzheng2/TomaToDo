@@ -1,6 +1,6 @@
 .login-body {
-  /*background: url("http://www.swaroopch.com/files/attachments/uploads/2011/01/5357244684_2a2eec9dd4_o.png") no-repeat center center fixed;*/
-  background: url("/assets/images/pomodoro1.jpg") no-repeat center center fixed;
+  background: url("http://www.swaroopch.com/files/attachments/uploads/2011/01/5357244684_2a2eec9dd4_o.png") no-repeat center center fixed;
+  /*background: url("/assets/images/pomodoro1.jpg") no-repeat center center fixed;*/
   background-size: cover;
   height: 100vh;
 }
