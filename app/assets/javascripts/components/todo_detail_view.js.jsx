@@ -10,6 +10,7 @@ var TodoDetailView = React.createClass ({
   componentWillReceiveProps: function(newProps) {
     var state = newProps.todo;
     state.edit = false;
+    // state.timer = false;
     this.setState(state);
   },
 
@@ -42,11 +43,15 @@ var TodoDetailView = React.createClass ({
     this.setState({ pomodoroCount: pomodoroCount });
   },
 
+  submitEdit: function () {
+    // this.forceUpdate();
+  },
+
   render: function () {
     var fields = this.state.edit ?
     (
       <div>
-        <TodoEdit todo={ this.props.todo }/>
+        <TodoEdit submitEdit={ this.submitEdit } todo={ this.props.todo }/>
         <button onClick={ this.handleEdit }>Cancel Edit</button>
       </div>
     ) :

@@ -1,7 +1,7 @@
 var View = React.createClass ({
 
   getInitialState: function () {
-    return { todos: TodoStore.all() };
+    return { todos: TodoStore.all(), newTodo: false };
   },
 
   componentDidMount: function () {
@@ -16,7 +16,11 @@ var View = React.createClass ({
   },
 
   todosChanged: function () {
-    this.setState({ activeTodo: TodoStore.all()[0], todos: TodoStore.all() });
+    var activeTodo;
+    if (this.state.activeTodo) {
+      activeTodo = TodoStore.getTodo(this.state.activeTodo.id);
+    }
+    this.setState({ activeTodo: activeTodo, todos: TodoStore.all() });
   },
 
   userChanged: function () {
@@ -46,25 +50,42 @@ var View = React.createClass ({
     this.setState({ signUp: false });
   },
 
+  handleCreate: function () {
+    this.setState({ newTodo: true });
+  },
+
+  cancelNewTodo: function () {
+    this.setState({ newTodo: false });
+  },
+
   render: function () {
-    var active;
+    var active, newTodo;
     if (this.state.activeTodo) {
       active = <TodoDetailView todo={ this.state.activeTodo } />;
     }
 
+    if (this.state.newTodo) {
+      newTodo = <TodoForm cancelNewTodo={ this.cancelNewTodo } currentUser={ this.state.currentUser }/>;
+    }
+
     var view;
     if (this.state.currentUser && this.state.currentUser.username) {
+      var activeTodo = null;
+      if (this.state.activeTodo) {
+        activeTodo = this.state.activeTodo.id;
+      }
       view = (
         <div>
           <div className="sidebar">
             <div className="stuff-in-sidebar">
               <div>{ "logged in as: " + this.state.currentUser.username }</div>
               <button onClick={ this.logout }>Log out</button>
-              <TodoList active={ this.state.activeTodo.id } todos={ this.state.todos } activateTodo={ this.activateTodo }/>
-              <TodoForm currentUser={ this.state.currentUser }/>
+              <TodoList active={ activeTodo } todos={ this.state.todos } activateTodo={ this.activateTodo }/>
+              <button onClick={ this.handleCreate }>Create Todo</button>
             </div>
           </div>
           <div className="main">
+            { newTodo }
             { active }
           </div>
         </div>

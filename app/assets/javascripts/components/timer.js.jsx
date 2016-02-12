@@ -64,7 +64,6 @@ var Timer = React.createClass({
   pause: function () {
     clearInterval(this.timer);
     this.setState({ pause: true });
-    debugger
   },
 
   resume: function () {
