@@ -1,6 +1,6 @@
 # TomaToDo
 
-[Heroku link][TomaToDo]
+[TomaToDo Heroku Link][heroku]
 
 [heroku]: https://tomatodo.herokuapp.com/
 
