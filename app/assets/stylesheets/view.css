@@ -2,17 +2,16 @@
 .view {
   display: block;
   width: 90%;
-  height: auto;
+  height: 100%;
   margin: auto;
   margin-top: 25px;
   background: white;
   border-radius: 5px;
   overflow: hidden;
-  /*border: 1px solid gray;*/
 }
 
 .sidebar {
-  background: blue;
+  background: rgb(0, 124, 0);
   width: 20%;
   height: 100%;
   float: left;
@@ -20,7 +19,7 @@
 }
 
 .main {
-  background: yellow;
+  background: #DF3232;
   width: 78%;
   height: 100%;
   float: right;

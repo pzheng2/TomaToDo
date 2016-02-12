@@ -101,8 +101,10 @@ var View = React.createClass ({
       } else {
         view = (
           <div className="login-body">
-            <SessionForm/>
-            <button className="sign-up" onClick={ this.signUp }>Sign Up</button>
+            <div className="login-inputs group">
+              <SessionForm/>
+              <button className="sign-up" onClick={ this.signUp }>Sign Up</button>
+            </div>
           </div>
         );
       }
