@@ -8,13 +8,7 @@ var Sidebar = React.createClass ({
   },
 
   render: function () {
-    // var activeTodo = null;
-    // debugger
-    //
-    // if (this.props.activeTodo) {
-    //   activeTodo = this.props.activeTodo.id;
-    // }
-
+    
     return (
       <div className="sidebar group">
         <div className="stuff-in-sidebar group">

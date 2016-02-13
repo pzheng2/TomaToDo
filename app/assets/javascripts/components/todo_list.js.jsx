@@ -9,7 +9,7 @@ var TodoList = React.createClass({
             var className = "";
             if (todo.id === this.props.activeTodoId)
               className += "active";
-            if (todo.pomodoros === 0)
+            if (parseInt(todo.pomodoros) === 0)
               className += " completed";
 
             return <li key={ todo.id }><div className={ className } onClick={ this.props.activateTodo } id={ todo.id }>{ todo.title }</div></li>;

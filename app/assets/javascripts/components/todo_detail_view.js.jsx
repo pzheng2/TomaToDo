@@ -73,7 +73,7 @@ var TodoDetailView = React.createClass ({
       );
     } else {
 
-      if (this.state.pomodoros === 0) {
+      if (parseInt(this.state.pomodoros) === 0) {
         timer = <p>Finished Todo!</p>;
       } else {
         timer = <button onClick={ this.startTimer }>Start Timer</button>;
