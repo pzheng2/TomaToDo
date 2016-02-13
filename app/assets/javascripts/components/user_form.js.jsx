@@ -42,7 +42,7 @@ var UserForm = React.createClass ({
           }
           <li><input className="input" type="text" name="username" placeholder="Username" /></li>
           <li><input className="input" type="password" name="password" placeholder="Password" /></li>
-          <li><button>Sign Up</button></li>
+          <li><button className="red button">Sign Up</button></li>
         </ul>
       </form>
     );

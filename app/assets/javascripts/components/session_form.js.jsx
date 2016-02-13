@@ -37,7 +37,7 @@ var SessionForm = React.createClass ({
           <li>{ this.state.errors }</li>
           <li><input className="input" type="text" name="username" placeholder="Username" /></li>
           <li><input className="input" type="password" name="password" placeholder="Password" /></li>
-          <li><button>Log In!</button></li>
+          <li><button className="red button">Log In!</button></li>
         </ul>
       </form>
     );

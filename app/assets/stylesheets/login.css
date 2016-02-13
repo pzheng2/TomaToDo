@@ -19,10 +19,47 @@
   left: 50%;
 }
 
+.button {
+  margin: 10px;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  background: transparent;
+  border-radius: 0.5em;
+  text-decoration: none;
+  color: white;
+  padding: 1em 3em;
+  background-color: #329bd8;
+  text-transform: uppercase;
+  font-weight: bold;
+  transition: 0.5s;
+}
+
+.button:hover {
+    background-color: transparent;
+    color: black;
+}
+
+.button:active {
+    background-color: transparent;
+    border: 1px black solid;
+    color: black;
+}
+
 .sign-up {
   float: right;
 }
 
 .back-to-login {
   float: left;
+}
+
+.red {
+  background-color: red;
 }
