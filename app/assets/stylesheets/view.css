@@ -33,7 +33,7 @@
 
 .sidebar-main {
   margin: auto;
-  margin-top: 25px;
+  margin-top: 3%;
   width: 90%;
   border-radius: 5px;
 }
@@ -49,10 +49,10 @@
   word-wrap: break-word;
 }
 
-.hand-drawn{
-  display:inline-block;
-  width: 20%;
-  margin: 5% auto;
+.hand-drawn {
+  margin-top: 5px;
+  display: inline-block;
+  width: 70%;
   border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
   padding: 16px;
   line-height: 24px;
@@ -64,7 +64,10 @@
   margin: 10px;
 }
 
-
 button {
   margin: 5px;
+}
+
+button:hover {
+  cursor: pointer;
 }

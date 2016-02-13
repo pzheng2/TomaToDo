@@ -4,12 +4,15 @@
 }
 
 .todo-fields {
-  min-width: 30%;
-  /*margin: auto;*/
+  width: 24%;
+  margin: auto;
 }
 
 .todo-fields > li {
-  /*display: block;*/
-  width: 100%;
   float: right;
+}
+
+.todo-fields > li:last-child {
+  float: none;
+  margin: auto;
 }

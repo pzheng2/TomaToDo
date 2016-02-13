@@ -1,4 +1,5 @@
 var TodoDetailView = React.createClass ({
+
   getInitialState: function () {
     var state = this.props.todo;
     state.edit = false;
@@ -59,7 +60,6 @@ var TodoDetailView = React.createClass ({
 
     var timer;
     if (this.state.timer) {
-
       timer = (
         <div>
           <Timer

@@ -46,16 +46,18 @@ var TodoEdit = React.createClass ({
             })
           }
         </div>
-        <label>Title
-          <input onChange={ this.updateTitle } value={ this.state.title } type="text" />
-        </label><br/>
-        <label>Body
-          <input onChange={ this.updateBody } value={ this.state.body } type="textarea" />
-        </label><br/>
-        <label>Pomodoros
-          <input onChange={ this.updatePomodoros } value={ this.state.pomodoros } type="number" />
-        </label>
-        <button onClick={ this.handleSubmit }>Submit</button>
+        <ul className="todo-fields group">
+          <li><label>Title
+            <input onChange={ this.updateTitle } value={ this.state.title } type="text" />
+          </label></li>
+          <li><label>Body
+            <input onChange={ this.updateBody } value={ this.state.body } type="textarea" />
+          </label></li>
+          <li><label>Pomodoros
+            <input onChange={ this.updatePomodoros } value={ this.state.pomodoros } type="number" />
+          </label></li>
+          <li><button onClick={ this.handleSubmit }>Submit</button></li>
+        </ul>
       </div>
     );
   }

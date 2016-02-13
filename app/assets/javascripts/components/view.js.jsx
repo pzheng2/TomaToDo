@@ -27,19 +27,15 @@ var View = React.createClass ({
     this.setState({ currentUser: CurrentUserStore.currentUser() });
   },
 
+  createTodo: function (e) {
+    e.preventDefault();
+    this.setState({ newTodo: true });
+  },
+
   activateTodo: function (e) {
     e.preventDefault();
     var activeTodo = this.state.todos.find(function (todo) { return todo.id === parseInt(e.currentTarget.id); });
     this.setState({ activeTodo: activeTodo });
-  },
-
-  createTodo: function (e) {
-    e.preventDefault();
-    this.setState({ newTodo: "true" });
-  },
-
-  logout: function () {
-    CurrentUserStore.logout();
   },
 
   signUp: function () {
@@ -59,41 +55,29 @@ var View = React.createClass ({
   },
 
   render: function () {
-    var active, newTodo;
-    if (this.state.activeTodo) {
-      active = <TodoDetailView todo={ this.state.activeTodo } />;
-    }
-
-    if (this.state.newTodo) {
+    var newTodo, activeTodoDetailView, view, emptyMain;
+    if (this.state.newTodo)
       newTodo = <TodoForm cancelNewTodo={ this.cancelNewTodo } currentUser={ this.state.currentUser }/>;
-    }
 
-    var view;
+    if (this.state.activeTodo)
+      activeTodoDetailView = <TodoDetailView todo={ this.state.activeTodo } />;
+
+    if (!(newTodo || activeTodoDetailView))
+      emptyMain = "Create or select a to-do to see stuff.";
+
     if (this.state.currentUser && this.state.currentUser.username) {
-      var activeTodo = null;
-      if (this.state.activeTodo) {
-        activeTodo = this.state.activeTodo.id;
-      }
       view = (
         <div className="sidebar-main">
-          <div className="sidebar">
-            <div className="stuff-in-sidebar">
-              <div className="current-user-status">
-                { "  " +this.state.currentUser.username }
-                <button onClick={ this.logout }>Log out</button>
-                <div className="TODOS">TODOS</div>
-              </div>
-              <TodoList active={ activeTodo } todos={ this.state.todos } activateTodo={ this.activateTodo }/>
-              <button onClick={ this.handleCreate }>Create Todo</button>
-            </div>
-          </div>
+          <Sidebar handleCreate={ this.handleCreate } username={ this.state.currentUser.username } todos={ this.state.todos } activateTodo={ this.activateTodo } />
           <div className="hand-drawn main">
             { newTodo }
-            { active }
+            { activeTodoDetailView }
+            { emptyMain }
           </div>
         </div>
       );
     } else {
+
       if (this.state.signUp) {
         view = (
           <div className="login-body">
@@ -101,7 +85,9 @@ var View = React.createClass ({
             <button className="back-to-login" onClick={ this.cancelSignUp }>Back to Login</button>
           </div>
         );
+
       } else {
+
         view = (
           <div className="login-body">
             <div className="login-inputs group">
@@ -117,8 +103,6 @@ var View = React.createClass ({
       <div className="view group">
         { view }
       </div>
-
     );
   }
-
 });

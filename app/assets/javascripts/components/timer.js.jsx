@@ -1,8 +1,8 @@
 var Timer = React.createClass({
 
   getInitialState: function () {
-    this.pomodoroLength = 25;
-    this.breakLength = 5;
+    this.pomodoroLength = .1;
+    this.breakLength = 1;
     this.longerBreakLength = 30;
 
     return {
@@ -82,17 +82,14 @@ var Timer = React.createClass({
     var minutesLeft = this.state.duration - minutesPassed;
     var secondsLeft = (60 - secondsPassed) % 60;
 
-    if (secondsLeft.toString().length < 2) {
+    if (secondsLeft.toString().length < 2)
       secondsLeft = "0" + secondsLeft.toString();
-    }
 
-    if (minutesLeft.toString().length < 2) {
+    if (minutesLeft.toString().length < 2)
       minutesLeft = "0" + minutesLeft.toString();
-    }
 
-    if (minutesLeft < 0) {
+    if (minutesLeft < 0)
       minutesLeft = "00";
-    }
 
     var pause, paused, skipBreak, modal;
 
