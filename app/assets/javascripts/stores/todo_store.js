@@ -87,17 +87,4 @@
     });
   };
 
-  TodoStore.toggleDone = function (id) {
-    $.ajax({
-      url: "api/todos/" + id,
-      method: "PATCH",
-      dataType: "json",
-      data: {todo: {done: !_todos[TodoStore.find(id)].done}},
-      success: function () {
-        _todos[TodoStore.find(id)].done = !_todos[TodoStore.find(id)].done;
-        TodoStore.changed();
-      }
-    });
-  };
-
 })(this);

@@ -55,7 +55,7 @@ var View = React.createClass ({
   },
 
   render: function () {
-    var newTodo, activeTodoDetailView, view, emptyMain;
+    var newTodo, activeTodoDetailView, view, emptyMain, activeTodoId;
     if (this.state.newTodo)
       newTodo = <TodoForm cancelNewTodo={ this.cancelNewTodo } currentUser={ this.state.currentUser }/>;
 
@@ -65,10 +65,14 @@ var View = React.createClass ({
     if (!(newTodo || activeTodoDetailView))
       emptyMain = "Create or select a to-do to see stuff.";
 
+    if (this.state.activeTodo) {
+      activeTodoId = this.state.activeTodo.id;
+    }
+
     if (this.state.currentUser && this.state.currentUser.username) {
       view = (
         <div className="sidebar-main">
-          <Sidebar handleCreate={ this.handleCreate } username={ this.state.currentUser.username } todos={ this.state.todos } activateTodo={ this.activateTodo } />
+          <Sidebar handleCreate={ this.handleCreate } username={ this.state.currentUser.username } todos={ this.state.todos } activateTodo={ this.activateTodo } activeTodoId={ activeTodoId } />
           <div className="hand-drawn main">
             { newTodo }
             { activeTodoDetailView }

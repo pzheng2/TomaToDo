@@ -13,7 +13,6 @@ class Api::TodosController < ApplicationController
 
   def create
     tp = todo_params
-    tp[:done] = false
     @todo = Todo.create!(tp)
     render json: @todo
   end

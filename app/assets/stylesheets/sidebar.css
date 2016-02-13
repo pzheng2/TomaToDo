@@ -52,8 +52,37 @@
 .active {
   color: #F87217;
   font-weight: bold;
+  text-decoration: underline;
+}
+
+.completed {
+  text-decoration: line-through;
 }
 
 .todo-list > li > div:hover {
-  background: #6599FF;
+  display: inline-block;
+	position: relative;
+}
+
+.todo-list > li > div:hover::after {
+  content: '';
+	display: block;
+	position: absolute;
+	right: 100%;
+	top: 50%;
+	margin-top: -10px;
+	border-top: 10px solid transparent;
+	border-right: 10px solid transparent;
+	border-bottom: 10px solid transparent;
+	border-left: 10px solid #6599FF;
+}
+
+.username {
+  font-weight: bold;
+  height: 15px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 76%;
+  margin: auto;
+  overflow: hidden;
 }
