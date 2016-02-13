@@ -19,6 +19,12 @@
   color: black;
 }
 
+.view-background {
+  background: url("https://a.pragprog.com/magazines/2009-11/images/pomodoro-artifacts__oc5h9a__.jpg") no-repeat center center fixed;
+  /*background: url("/assets/images/pomodoro2.jpg") no-repeat center center fixed;*/
+  background-size: cover;
+}
+
 .view {
   font-family: monospace;
   display: block;
@@ -26,9 +32,6 @@
   min-height: 100vh;
   margin: auto;
   overflow: hidden;
-  background: url("https://a.pragprog.com/magazines/2009-11/images/pomodoro-artifacts__oc5h9a__.jpg") no-repeat center center fixed;
-  /*background: url("/assets/images/pomodoro2.jpg") no-repeat center center fixed;*/
-  background-size: cover;
 }
 
 .sidebar-main {

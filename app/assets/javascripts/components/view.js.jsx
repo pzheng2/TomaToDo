@@ -55,7 +55,7 @@ var View = React.createClass ({
   },
 
   render: function () {
-    var newTodo, activeTodoDetailView, view, emptyMain, activeTodoId;
+    var newTodo, activeTodoDetailView, view, emptyMain, activeTodoId, viewBackground;
 
     if (this.state.newTodo)
       newTodo = <TodoForm cancelNewTodo={ this.cancelNewTodo } currentUser={ this.state.currentUser }/>;
@@ -80,6 +80,8 @@ var View = React.createClass ({
           </div>
         </div>
       );
+
+      viewBackground = "  view-background";
 
     } else {
 
@@ -107,7 +109,7 @@ var View = React.createClass ({
     }
 
     return (
-      <div className="view group">
+      <div className={ "view group" + viewBackground }>
         { view }
       </div>
     );
