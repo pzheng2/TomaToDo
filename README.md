@@ -30,11 +30,7 @@ Other Tools: Git
 
 ## Tradeoffs/Decisions
 
-- Stops the timer when users switch between to-dos if the timer was running because it is less ambiguous.
-It would be difficult to figure out which to-do was being completed. The user might not know which to-do they
-started the timer on. Switching between to-dos might indicate they are working on multiple to-dos even though
-they should only be working on one. Also, they should be working on their to-do not looking through the to-dos
-if the timer is running.
+- I automatically stops the timer whenever the user switches between TODOs. This removes the possibility of multiple timers running at once while also disincentivizes the user from looking through their TODOs while their timer is running.
 
 - Allows user to pause/resume the timer. A user might have something urgent and can't complete a
 25 minute interval.
@@ -59,7 +55,6 @@ ended up doing the latter, but I have not yet deleted the done attribute due to 
 
 ## Future Improvements
 - The code is not as organized and clean as it can be. Using a framework might have helped.
-- Could definitely refactor some of the components.
 - Unit tests
 - Can make mobile viewing better/make design more responsive.
 - Multi browser support

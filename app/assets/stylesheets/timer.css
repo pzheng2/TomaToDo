@@ -1,6 +1,15 @@
-.time-left {
+.timer {
   margin: 10px;
   font-size: 40px;
+  transition-duration: 0.5s;
+}
+
+.paused {
+  color: red;
+}
+
+.playing {
+  color: green;
 }
 
 .break-alert {

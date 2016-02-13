@@ -56,6 +56,7 @@ var View = React.createClass ({
 
   render: function () {
     var newTodo, activeTodoDetailView, view, emptyMain, activeTodoId;
+
     if (this.state.newTodo)
       newTodo = <TodoForm cancelNewTodo={ this.cancelNewTodo } currentUser={ this.state.currentUser }/>;
 
@@ -63,11 +64,10 @@ var View = React.createClass ({
       activeTodoDetailView = <TodoDetailView todo={ this.state.activeTodo } />;
 
     if (!(newTodo || activeTodoDetailView))
-      emptyMain = "Create or select a to-do to see stuff.";
+      emptyMain = "Create or select a to-do";
 
-    if (this.state.activeTodo) {
+    if (this.state.activeTodo)
       activeTodoId = this.state.activeTodo.id;
-    }
 
     if (this.state.currentUser && this.state.currentUser.username) {
       view = (
@@ -80,12 +80,15 @@ var View = React.createClass ({
           </div>
         </div>
       );
+
     } else {
 
       if (this.state.signUp) {
         view = (
           <div className="login-body">
-            <UserForm/>
+            <div className="login-inputs group">
+              <UserForm/>
+            </div>
             <button className="back-to-login" onClick={ this.cancelSignUp }>Back to Login</button>
           </div>
         );

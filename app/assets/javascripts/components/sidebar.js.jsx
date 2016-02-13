@@ -1,4 +1,5 @@
 var Sidebar = React.createClass ({
+  
   getInitialState: function () {
     return {};
   },
@@ -8,7 +9,7 @@ var Sidebar = React.createClass ({
   },
 
   render: function () {
-    
+
     return (
       <div className="sidebar group">
         <div className="stuff-in-sidebar group">

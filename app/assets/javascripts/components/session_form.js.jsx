@@ -1,4 +1,4 @@
-var SessionForm = React.createClass({
+var SessionForm = React.createClass ({
 
   getInitialState: function () {
     return {};
@@ -24,24 +24,19 @@ var SessionForm = React.createClass({
 
   render: function () {
     return (
-      <form className="group" onSubmit={ this.submit }>
+      <form className="login-inputs group" onSubmit={ this.submit }>
         <h1 className="website-name">
           <div className="toma">Toma</div>
           <div className="to">To</div>
           <div className="do">Do</div>
         </h1>
+
         <h3>Log In</h3>
+
         <ul>
           <li>{ this.state.errors }</li>
-
-          <li>
-            <input className="input" type="text" name="username" placeholder="Username" />
-          </li>
-
-          <li>
-            <input className="input" type="password" name="password" placeholder="Password" />
-          </li>
-
+          <li><input className="input" type="text" name="username" placeholder="Username" /></li>
+          <li><input className="input" type="password" name="password" placeholder="Password" /></li>
           <li><button>Log In!</button></li>
         </ul>
       </form>

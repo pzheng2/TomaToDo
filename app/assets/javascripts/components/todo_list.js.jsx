@@ -1,7 +1,6 @@
-var TodoList = React.createClass({
+var TodoList = React.createClass ({
 
   render: function () {
-
     return (
       <ul className="todo-list">
         {
@@ -18,6 +17,5 @@ var TodoList = React.createClass({
       </ul>
     );
   }
-
 
 });

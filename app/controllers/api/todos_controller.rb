@@ -12,9 +12,12 @@ class Api::TodosController < ApplicationController
   end
 
   def create
-    tp = todo_params
-    @todo = Todo.create!(tp)
-    render json: @todo
+    @todo = Todo.new(todo_params)
+    if @todo.save
+      render json: @todo
+    else
+      render json: @todo.errors.full_messages, status: 400
+    end
   end
 
   def update

@@ -1,4 +1,4 @@
-var UserForm = React.createClass({
+var UserForm = React.createClass ({
 
   getInitialState: function () {
     return { username: "", password: "", errors: null };
@@ -21,16 +21,10 @@ var UserForm = React.createClass({
   },
 
   errorCallback: function (errors) {
-    this.setState({ errors: errors });
+    this.setState({ errors: errors.responseJSON });
   },
 
   render: function () {
-    var errors = [];
-    if (this.state.errors) {
-      for (var i = 0; i < this.state.errors.responseJSON.length; i++) {
-        errors.push(this.state.errors.responseJSON[i]);
-      }
-    }
 
     return (
       <form className="login-inputs group" onSubmit={ this.submit }>
@@ -39,26 +33,15 @@ var UserForm = React.createClass({
           <div className="to">To</div>
           <div className="do">Do</div>
         </h1>
+
         <h3>Sign Up</h3>
         <ul>
-          <li>
-            <div className="errors">
-              {
-                errors.map(function (error) {
-                  return <div>{ error }</div>;
-                })
-              }
-            </div>
-          </li>
-
-          <li>
-            <input className="input" type="text" name="username" placeholder="Username" />
-          </li>
-
-          <li>
-            <input className="input" type="password" name="password" placeholder="Password" />
-          </li>
-
+          { this.state.errors && this.state.errors.map(function (error) {
+              return <div>{ error }</div>;
+            })
+          }
+          <li><input className="input" type="text" name="username" placeholder="Username" /></li>
+          <li><input className="input" type="password" name="password" placeholder="Password" /></li>
           <li><button>Sign Up</button></li>
         </ul>
       </form>

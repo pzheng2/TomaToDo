@@ -1,16 +1,18 @@
-var Timer = React.createClass({
+var Timer = React.createClass ({
+
+  POMODORO_LENGTH: 25,
+  BREAK_LENGTH: 5,
+  LONGERBREAK_LENGTH: 30,
+  MILLISECONDS_IN_SECOND: 1000,
+  SECONDS_IN_MINUTE: 60,
 
   getInitialState: function () {
-    this.pomodoroLength = 25;
-    this.breakLength = 5;
-    this.longerBreakLength = 30;
-
     return {
       timeElapsed: 0,
       start: this.props.start,
       pause: false,
       break: false,
-      duration: this.pomodoroLength,
+      duration: this.POMODORO_LENGTH,
       pomodoroCount: this.props.pomodoroCount
     };
   },
@@ -25,7 +27,7 @@ var Timer = React.createClass({
   },
 
   tick: function () {
-    var durationInMilliseconds = this.state.duration * 60000;
+    var durationInMilliseconds = this.state.duration * this.MILLISECONDS_IN_SECOND * this.SECONDS_IN_MINUTE;
     if (this.state.timeElapsed >= durationInMilliseconds) {
       this.timerFinished();
     }
@@ -34,7 +36,7 @@ var Timer = React.createClass({
 
   timerFinished: function () {
     var pomodoroCount = this.state.pomodoroCount, newDuration;
-    if (this.state.duration === this.pomodoroLength) {
+    if (this.state.duration === this.POMODORO_LENGTH) {
       TodoStore.update({
         id: this.props.todo.id,
         title: this.props.todo.title,
@@ -46,11 +48,11 @@ var Timer = React.createClass({
     }
 
     if ((this.state.pomodoroCount % 4) === 3 && !this.state.break) {
-      newDuration = this.longerBreakLength;
+      newDuration = this.LONGER_BREAK_LENGTH;
     } else if (this.state.break) {
-      newDuration = this.pomodoroLength;
+      newDuration = this.POMODORO_LENGTH;
     } else {
-      newDuration = this.breakLength;
+      newDuration = this.BREAK_LENGTH;
     }
 
     this.setState({
@@ -76,11 +78,11 @@ var Timer = React.createClass({
   },
 
   render: function () {
-    var totalSeconds = Math.floor(this.state.timeElapsed / 1000);
-    var minutesPassed = Math.ceil(totalSeconds / 60);
-    var secondsPassed = totalSeconds % 60;
+    var totalSeconds = Math.floor(this.state.timeElapsed / this.MILLISECONDS_IN_SECOND);
+    var minutesPassed = Math.ceil(totalSeconds / this.SECONDS_IN_MINUTE);
+    var secondsPassed = totalSeconds % this.SECONDS_IN_MINUTE;
     var minutesLeft = this.state.duration - minutesPassed;
-    var secondsLeft = (60 - secondsPassed) % 60;
+    var secondsLeft = (this.SECONDS_IN_MINUTE - secondsPassed) % this.SECONDS_IN_MINUTE;
 
     if (secondsLeft.toString().length < 2)
       secondsLeft = "0" + secondsLeft.toString();
@@ -91,13 +93,14 @@ var Timer = React.createClass({
     if (minutesLeft < 0)
       minutesLeft = "00";
 
-    var pause, paused, skipBreak, modal;
+    var pause, timerState = "", skipBreak, modal;
 
     if (this.state.pause) {
       pause = <button onClick={ this.resume }>Resume</button>;
-      paused = "Paused";
+      timerState = " paused";
     } else {
       pause = <button onClick={ this.pause }>Pause</button>;
+      timerState = " playing";
     }
 
     if (this.state.break) {
@@ -116,16 +119,14 @@ var Timer = React.createClass({
     return (
       <div>
         { modal }
-        { paused }
         <div className="consecutive-pomodoros">
           { "Pomodoros completed: " + this.state.pomodoroCount }
         </div>
-        <div className="time-left">
+        <div className={ "timer" + timerState }>
           { minutesLeft + ":" + secondsLeft }
         </div>
         { pause }
         { skipBreak }
-
       </div>
     );
   }

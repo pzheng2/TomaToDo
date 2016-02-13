@@ -6,11 +6,14 @@
   border-radius: 5px;
 }
 
+.stuff-in-sidebar {
+  margin: 10px;
+}
+
 .current-user-status {
   padding: 26px 0 0px 0;
   background-image: url(http://www.clipartbest.com/cliparts/niB/nBg/niBnBg6iA.png);
   background-size: cover;
-  background-position: 0 0;
   text-align: center;
 }
 

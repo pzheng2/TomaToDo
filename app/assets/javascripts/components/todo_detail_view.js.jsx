@@ -8,7 +8,7 @@ var TodoDetailView = React.createClass ({
     return state;
   },
 
-  componentWillReceiveProps: function(newProps) {
+  componentWillReceiveProps: function (newProps) {
     var state = newProps.todo;
     state.edit = false;
     if (this.state.id !== newProps.todo.id) {
@@ -47,18 +47,19 @@ var TodoDetailView = React.createClass ({
   },
 
   render: function () {
-    var fields = this.state.edit ?
-    (
-      <div>
-        <TodoEdit todo={ this.props.todo }/>
-        <button onClick={ this.handleEdit }>Cancel Edit</button>
-      </div>
-    ) :
-    (
-      <TodoItemView handleEdit={ this.handleEdit } todo={ this.props.todo }/>
-    );
+    var fields, timer;
 
-    var timer;
+    if (this.state.edit) {
+      fields = (
+        <div>
+          <TodoEdit todo={ this.props.todo }/>
+          <button onClick={ this.handleEdit }>Cancel Edit</button>
+        </div>
+      );
+    } else {
+      fields = <TodoItemView handleEdit={ this.handleEdit } todo={ this.props.todo }/>;
+    }
+
     if (this.state.timer) {
       timer = (
         <div>

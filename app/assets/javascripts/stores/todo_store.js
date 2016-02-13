@@ -36,7 +36,7 @@
     });
   };
 
-  TodoStore.create = function (todo) {
+  TodoStore.create = function (todo, successCallBack, errorCallback) {
     $.ajax({
       url: "api/todos",
       method: "POST",
@@ -45,6 +45,10 @@
       success: function (response) {
         _todos.push(response);
         TodoStore.changed();
+        successCallBack && successCallBack();
+      },
+      error: function (errors) {
+        errorCallback && errorCallback(errors);
       }
     });
   };
