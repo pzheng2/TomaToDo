@@ -15,4 +15,3 @@ id          | integer   | not null, primary key
 title       | string    | not null, indexed, unique
 body        | text      |
 pomodoros   | integer   |
-done        | boolean   | default: false

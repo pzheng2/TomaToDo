@@ -51,7 +51,7 @@ because the response won't be as large.
 - I created a done attribute on to-dos. I don't think I needed that I could just calculate whether the to-do is done
 on the front-end. I was thinking that it would be better to calculate it on the back-end, but it's probably faster
 to just update the pomodoros and calculate whether it is done on the front-end than to wait for the ajax response. I
-ended up doing the latter, but I have not yet deleted the done attribute due to fear of things I would have to fix.
+ended up doing the latter and deleting the done attribute from my database.
 
 ## Future Improvements
 - The code is not as organized and clean as it can be. Using a framework might have helped.
