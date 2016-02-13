@@ -29,7 +29,7 @@ var View = React.createClass ({
 
   activateTodo: function (e) {
     e.preventDefault();
-    var activeTodo = this.state.todos.find(function (todo) { return todo.title === e.currentTarget.innerHTML; });
+    var activeTodo = this.state.todos.find(function (todo) { return todo.id === parseInt(e.currentTarget.id); });
     this.setState({ activeTodo: activeTodo });
   },
 
@@ -78,13 +78,16 @@ var View = React.createClass ({
         <div className="sidebar-main">
           <div className="sidebar">
             <div className="stuff-in-sidebar">
-              <div>{ "logged in as: " + this.state.currentUser.username }</div>
-              <button onClick={ this.logout }>Log out</button>
+              <div className="current-user-status">
+                { "  " +this.state.currentUser.username }
+                <button onClick={ this.logout }>Log out</button>
+                <div className="TODOS">TODOS</div>
+              </div>
               <TodoList active={ activeTodo } todos={ this.state.todos } activateTodo={ this.activateTodo }/>
               <button onClick={ this.handleCreate }>Create Todo</button>
             </div>
           </div>
-          <div className="main">
+          <div className="hand-drawn main">
             { newTodo }
             { active }
           </div>

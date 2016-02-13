@@ -4,13 +4,12 @@ var TodoList = React.createClass({
 
     return (
       <ul className="todo-list">
-        TODOS
         {
           this.props.todos.map(function (todo) {
             if (todo.id === this.props.active) {
-              return <li className="active" onClick={ this.props.activateTodo } key={ todo.id }>{ todo.title }</li>;
+              return <li key={ todo.id }><div className="active" onClick={ this.props.activateTodo } id={ todo.id }>{ todo.title }</div></li>;
             } else {
-              return <li onClick={ this.props.activateTodo } key={ todo.id }>{ todo.title }</li>;
+              return <li key={ todo.id }><div onClick={ this.props.activateTodo } id={ todo.id }>{ todo.title }</div></li>;
             }
           }.bind(this))
         }

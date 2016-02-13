@@ -1,0 +1,105 @@
+
+.sidebar {
+  /*background: rgba(0, 124, 0, .7);*/
+  width: 240px;
+  height: auto;
+  float: left;
+  border-radius: 5px;
+}
+
+.current-user-status {
+  padding: 40px 0 0px 0;
+  background-image: url(looseleaf2.png);
+  background-size: cover;
+  background-position: 0 0;
+  text-align: center;
+}
+
+.todo-list {
+  overflow: hidden;
+  text-align: center;
+}
+
+.todo-list > li:first-child {
+  padding: 9px 0 5px 0;
+  background-image: url(looseleaf2.png);
+  background-size: cover;
+  overflow: hidden;
+  background-position: 0 60px;
+}
+
+.todo-list > li {
+  padding: 9px 0 5px 0;
+  background-image: url(looseleaf2.png);
+  background-size: cover;
+  overflow: hidden;
+  background-position: 0 61px;
+}
+
+.todo-list > li:last-child {
+  padding: 7px 0 9px 0;
+  background-image: url(looseleaf2.png);
+  background-size: cover;
+  overflow: hidden;
+  background-position: 0 31px;
+}
+
+
+.TODOS {
+  padding: 7px 0 2px 0;
+  text-align: center;
+}
+
+.active {
+  color: #F87217;
+  font-weight: bold;
+  /*background: white;*/
+}
+
+
+.todo-list > li > div:hover {
+  background: #6599FF;
+  /*border-bottom: 1px solid blue;*/
+}
+
+.drawbox {
+  position:relative;
+  float:left;
+  width:200px;
+  height:100px;
+  background-color:#fff;
+  padding:25px;
+
+  /*
+ -webkit-transform: rotate(2deg);
+  -moz-transform: rotate(2deg);
+  -ms-transform: rotate(2deg);
+  -o-transform: rotate(2deg);*/
+}
+
+.draw:after {
+  border: 0.1em solid transparent;
+  border-image: url('http://emptyeasel.com/wp-content/uploads/2012/11/creatingtexture2-carrielewis.jpg') 0 27 27 27 round stretch;
+
+  /*border-radius: 0.25em 0.10em 0.5em 0.25em;*/
+  transform: rotate(-1deg);
+  content: '';
+  top:0px;
+  left:0px;
+  position:absolute;
+  width:100%;
+  height:100%;
+
+}
+.draw:before {
+  border-top: 0.1em solid transparent;
+  border-image: url('http://emptyeasel.com/wp-content/uploads/2012/11/creatingtexture2-carrielewis.jpg') 27 0 0 0 stretch round;
+  /*border-radius: 1.5em;*/
+  content: '';
+  height: 3em;
+  left: 0;
+  top: 0;
+  transform: rotate(-1deg);
+  width:100%;
+  position:absolute;
+}

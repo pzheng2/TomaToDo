@@ -1,14 +1,15 @@
 .todo-form {
   margin: 10px;
+  text-align: center;
 }
 
 .todo-fields {
-  width: 100%;
-  margin: auto;
-  float: left;
+  min-width: 30%;
+  /*margin: auto;*/
 }
 
 .todo-fields > li {
-  display: block;
-  margin-bottom: 5px;
+  /*display: block;*/
+  width: 100%;
+  float: right;
 }

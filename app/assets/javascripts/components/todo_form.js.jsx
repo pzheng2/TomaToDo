@@ -31,7 +31,7 @@ var TodoForm = React.createClass({
     return (
       <div className="todo-form">
         <h3>Add new todo</h3>
-        <ul className="todo-fields">
+        <ul className="todo-fields group">
           <li><label>Title:
             <input onChange={ this.updateTitle } value={ this.state.title } type="text" />
           </label></li>
