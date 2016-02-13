@@ -28,15 +28,15 @@
     return (typeof _currentUser.id !== "undefined");
   };
 
-  CurrentUserStore.createUser = function (credentials, successCallback, errorCallback) {
+  CurrentUserStore.createUser = function (credentials, errorCallback) {
     $.ajax({
       url: '/api/users',
       type: 'POST',
       dataType: 'json',
       data: { user: credentials },
-      success: function (user) {
+      success: function () {
         CurrentUserStore.changed();
-        successCallback && successCallback(user);
+        CurrentUserStore.fetchCurrentUser();
       },
       error: function (errors) {
         errorCallback && errorCallback(errors);
@@ -73,14 +73,14 @@
     });
   };
 
-  CurrentUserStore.fetchCurrentUser = function (successCallback) {
+  CurrentUserStore.fetchCurrentUser = function () {
     $.ajax({
      url: '/api/session',
      type: 'GET',
      dataType: 'json',
      success: function (currentUser) {
-       CurrentUserActions.receiveCurrentUser(currentUser);
-       successCallback && successCallback(currentUser);
+       _currentUser = currentUser;
+       CurrentUserStore.changed();
      }
 
     });

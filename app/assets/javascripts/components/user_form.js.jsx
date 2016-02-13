@@ -7,17 +7,7 @@ var UserForm = React.createClass ({
   submit: function (e) {
     e.preventDefault();
     var credentials = $(e.currentTarget).serializeJSON();
-    CurrentUserStore.createUser(
-      credentials,
-      this.successCallback(credentials),
-      this.errorCallback
-    );
-  },
-
-  successCallback: function (credentials) {
-    setTimeout(function () {
-      CurrentUserStore.login(credentials);
-    }, 1000);
+    CurrentUserStore.createUser(credentials, this.errorCallback);
   },
 
   errorCallback: function (errors) {

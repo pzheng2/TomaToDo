@@ -1,11 +1,12 @@
 var Sidebar = React.createClass ({
-  
+
   getInitialState: function () {
     return {};
   },
 
   logout: function () {
     CurrentUserStore.logout();
+    this.props.redirectToLogin();
   },
 
   render: function () {

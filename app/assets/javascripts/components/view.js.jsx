@@ -8,6 +8,7 @@ var View = React.createClass ({
     TodoStore.addChangedHandler(this.todosChanged);
     TodoStore.fetch();
     CurrentUserStore.addChangedHandler(this.userChanged);
+    CurrentUserStore.fetchCurrentUser();
   },
 
   componentWillUnmount: function () {
@@ -25,6 +26,7 @@ var View = React.createClass ({
 
   userChanged: function () {
     this.setState({ currentUser: CurrentUserStore.currentUser() });
+    TodoStore.fetch();
   },
 
   createTodo: function (e) {
@@ -72,7 +74,7 @@ var View = React.createClass ({
     if (this.state.currentUser && this.state.currentUser.username) {
       view = (
         <div className="sidebar-main">
-          <Sidebar handleCreate={ this.handleCreate } username={ this.state.currentUser.username } todos={ this.state.todos } activateTodo={ this.activateTodo } activeTodoId={ activeTodoId } />
+          <Sidebar handleCreate={ this.handleCreate } username={ this.state.currentUser.username } todos={ this.state.todos } activateTodo={ this.activateTodo } activeTodoId={ activeTodoId } redirectToLogin={ this.cancelSignUp } />
           <div className="hand-drawn main">
             { newTodo }
             { activeTodoDetailView }
