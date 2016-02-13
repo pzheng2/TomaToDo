@@ -8,7 +8,7 @@
 
 .current-user-status {
   padding: 26px 0 0px 0;
-  background-image: url(looseleaf2.png);
+  background-image: url(http://www.clipartbest.com/cliparts/niB/nBg/niBnBg6iA.png);
   background-size: cover;
   background-position: 0 0;
   text-align: center;
@@ -21,7 +21,7 @@
 
 .todo-list > li:first-child {
   padding: 9px 0 5px 0;
-  background-image: url(looseleaf2.png);
+  background-image: url(http://www.clipartbest.com/cliparts/niB/nBg/niBnBg6iA.png);
   background-size: cover;
   overflow: hidden;
   background-position: 0 60px;
@@ -29,7 +29,7 @@
 
 .todo-list > li {
   padding: 9px 0 5px 0;
-  background-image: url(looseleaf2.png);
+  background-image: url(http://www.clipartbest.com/cliparts/niB/nBg/niBnBg6iA.png);
   background-size: cover;
   overflow: hidden;
   background-position: 0 61px;
@@ -37,7 +37,7 @@
 
 .todo-list > li:last-child {
   padding: 7px 0 9px 0;
-  background-image: url(looseleaf2.png);
+  background-image: url(http://www.clipartbest.com/cliparts/niB/nBg/niBnBg6iA.png);
   background-size: cover;
   overflow: hidden;
   background-position: 0 31px;
