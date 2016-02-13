@@ -19,7 +19,7 @@ var Sidebar = React.createClass ({
       <div className="sidebar group">
         <div className="stuff-in-sidebar group">
           <div className="current-user-status">
-            <h1 className="username">{ this.props.username + "\'s To-Do List and some other stuff" }</h1>
+            <h1 className="username">{ this.props.username + "\'s To-Do List" }</h1>
             <button onClick={ this.logout }>Log out</button>
             <div className="to-dos">To-Dos</div>
           </div>

@@ -17,6 +17,7 @@
 .todo-list {
   overflow: hidden;
   text-align: center;
+  white-space: nowrap;
 }
 
 .todo-list > li:first-child {
@@ -31,7 +32,7 @@
   padding: 9px 0 5px 0;
   background-image: url(http://www.clipartbest.com/cliparts/niB/nBg/niBnBg6iA.png);
   background-size: cover;
-  overflow: hidden;
+  height: 15px;
   background-position: 0 61px;
 }
 
@@ -59,9 +60,18 @@
   text-decoration: line-through;
 }
 
+.todo-list > li > div {
+  text-overflow: ellipsis;
+  height: 15px;
+  overflow: hidden;
+  margin: auto;
+  max-width: 76%;
+}
+
 .todo-list > li > div:hover {
   display: inline-block;
 	position: relative;
+  overflow: visible;
 }
 
 .todo-list > li > div:hover::after {
@@ -70,6 +80,8 @@
 	position: absolute;
 	right: 100%;
 	top: 50%;
+  height: 0;
+  width: 0;
 	margin-top: -10px;
 	border-top: 10px solid transparent;
 	border-right: 10px solid transparent;
