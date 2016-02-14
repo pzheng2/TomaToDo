@@ -60,7 +60,9 @@ var TodoDetailView = React.createClass ({
       fields = <TodoItemView handleEdit={ this.handleEdit } todo={ this.props.todo }/>;
     }
 
-    if (this.state.timer) {
+    if (parseInt(this.state.pomodoros) === 0) {
+      timer = <p>Finished Todo!</p>;
+    } else if (this.state.timer) {
       timer = (
         <div>
           <Timer
@@ -73,12 +75,7 @@ var TodoDetailView = React.createClass ({
         </div>
       );
     } else {
-
-      if (parseInt(this.state.pomodoros) === 0) {
-        timer = <p>Finished Todo!</p>;
-      } else {
-        timer = <button onClick={ this.startTimer }>Start Timer</button>;
-      }
+      timer = <button onClick={ this.startTimer }>Start Timer</button>;
     }
 
     return (
