@@ -30,7 +30,7 @@ Other Tools: Git
 
 ## Tradeoffs/Decisions
 
-- I automatically stops the timer whenever the user switches between TODOs. This removes the possibility of multiple timers running at once while also disincentivizes the user from looking through their TODOs while their timer is running.
+- I automatically stop the timer whenever the user switches between TODOs and creates new TODOs. This removes the possibility of multiple timers running at once while also disincentives the user from looking through their TODOs while their timer is running.
 
 - Allows user to pause/resume the timer. A user might have something urgent and can't complete a
 25 minute interval.
